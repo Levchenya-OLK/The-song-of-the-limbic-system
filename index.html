@@ -9,60 +9,109 @@
 
   <style>
     :root{
-      --max-width:900px;
+      --max-width:1100px;
+      --label-width:200px; /* ширина мітки — змінюйте під бажаний відступ */
       --accent:#222;
       --muted:#666;
       --paper:#fff;
       --bg:#f6f6f6;
     }
     html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--accent);font-family: 'Montserrat',sans-serif;}
-    .wrap{max-width:var(--max-width);margin:36px auto;padding:32px;background:var(--paper);box-shadow:0 12px 30px rgba(0,0,0,0.06);border-radius:10px;}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    h1{font-family:'Playfair Display',serif;font-size:34px;margin:0;text-align:center;letter-spacing:0.6px}
-    .subtitle{font-size:15px;color:var(--muted);text-align:center;margin-top:6px;margin-bottom:20px}
-    .art{display:block;max-width:100%;height:auto;margin:20px auto;border:1px solid rgba(0,0,0,0.06);border-radius:6px}
-    .fields{margin:18px 0;font-size:16px;line-height:1.65}
-    .fields p{margin:8px 0}
-    .label{display:inline-block;width:170px;font-weight:600}
-    .contacts{border-top:1px solid #eee;padding-top:12px;margin-top:18px;color:var(--muted);font-size:15px;text-align:center}
-    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:520px){
-      .label{display:block;width:auto;margin-bottom:6px}
-      header{flex-direction:column;gap:8px}
+    .wrap{
+      max-width:var(--max-width);
+      margin:36px auto;
+      padding:32px;
+      background:var(--paper);
+      box-shadow:0 12px 30px rgba(0,0,0,0.06);
+      border-radius:10px;
+      box-sizing:border-box;
     }
-    @media print{
+
+    h1{
+      font-family:'Playfair Display',serif;
+      font-size:34px;
+      margin:0 0 8px 0;
+      text-align:center;
+      letter-spacing:0.6px;
+    }
+    .subtitle{
+      font-size:15px;color:var(--muted);text-align:center;margin:6px 0 20px 0;
+    }
+    .art{
+      display:block;
+      max-width:100%;
+      height:auto;
+      margin:20px auto;
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:6px;
+      max-height:65vh;
+      object-fit:contain;
+    }
+    .fields{margin:18px 0;font-size:16px;line-height:1.6}
+    .fields p{margin:10px 0; clear:both;}
+    .label{
+      display:inline-block;
+      width:var(--label-width);
+      font-weight:700;
+      vertical-align:top;
+      box-sizing:border-box;
+    }
+    .value{
+      display:block;
+      margin-left: calc(var(--label-width) + 8px);
+      box-sizing:border-box;
+    }
+    .contact-row .label{float:left}
+    .contact-row .value{display:inline-block;margin-left:0; margin-left: calc(var(--label-width) + 8px);}
+
+    .contacts{border-top:1px solid #eee;padding-top:12px;margin-top:18px;color:var(--muted);font-size:15px}
+    .contacts p{margin:8px 0}
+
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:720px){
+      :root{--label-width:140px;}
+      .subtitle{padding:0 12px}
+    }
+    @media (max-width:520px){
+      :root{--label-width:110px;}
+      .label{display:block;width:auto;margin-bottom:6px}
+      .value{margin-left:0;padding-left:0}
+    }
+     @media print{
       body{background:white}
       .wrap{box-shadow:none;margin:0;border-radius:0}
-      a[href]:after{content:""}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div style="font-weight:700;font-family:'Montserrat',sans-serif">OLK — Oksana Levchenya</div>
-      <div style="text-align:right;color:var(--muted)">Certificate of Authenticity</div>
-    </header>
-
     <h1>CERTIFICATE of AUTHENTICITY</h1>
+    
     <div class="subtitle">
       This document certifies that the artwork described below is an original and unique creation by
       <strong>Oksana Levchenya (Konstantinovska)</strong>, also known as <strong>OLK</strong>, hand-woven in Kyiv, Ukraine, in the year <strong>2024–2025</strong>.
     </div>
 
-    <!-- Фото килима розміщене у корені репозиторію -->
     <img class="art" src="artwork.jpg" alt="The song of the limbic system — artwork">
 
     <div class="fields">
-      <p><span class="label">Title of the work:</span> <strong>The song of the limbic system</strong></p>
-      <p><span class="label">Medium:</span> Hand-woven from dyed woolen yarn on a cotton warp using a vertical loom, with embroidered details. The artwork is created according to the artist’s original sketch.</p>
-      <p><span class="label">Dimensions:</span> 197 × 330 cm</p>
-      <p><span class="label">Edition:</span> Limited edition of 2 hand-woven works — Copy 1 of 2</p>
+      <p><span class="label">Title of the work:</span><span class="value"><strong>The song of the limbic system</strong></span></p>
+
+      <p>
+        <span class="label">Medium:</span>
+        <span class="value">
+          Hand-woven from dyed woolen yarn on a cotton warp using a vertical loom, with embroidered details.
+          The artwork is created according to the artist’s original sketch.
+        </span>
+      </p>
+
+      <p><span class="label">Dimensions:</span><span class="value">197 × 330 cm</span></p>
+      <p><span class="label">Edition:</span><span class="value">Limited edition of 2 hand-woven works — Copy 1 of 2</span></p>
     </div>
 
     <div class="contacts">
-      <div>📧 <a href="mailto:olkmanufactory@gmail.com">olkmanufactory@gmail.com</a></div>
-      <div>📞 +38 067 466 73 60</div>
+      <p class="contact-row"><span class="label">Email:</span><span class="value"><a href="mailto:olkmanufactory@gmail.com">olkmanufactory@gmail.com</a></span></p>
+      <p class="contact-row"><span class="label">Phone:</span><span class="value">+38 067 466 73 60</span></p>
     </div>
 
     <footer>
